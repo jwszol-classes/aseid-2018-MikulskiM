@@ -10,7 +10,7 @@ warnings.filterwarnings('ignore')
 node = TerrainTiles(tile_format='geotiff', zoom=5)
 
 # create coordinates to get tiles
-# Coordinates for both americas in one Coordinates([clinspace(75, -60, 1000), clinspace(-155, -35, 1000)], dims=['lat', 'lon'])
+# Coordinates for both americas in one: Coordinates([clinspace(75, -60, 1000), clinspace(-155, -35, 1000)], dims=['lat', 'lon'])
 coords = Coordinates([clinspace(75, -60, 1000), clinspace(-155, -35, 1000)], dims=['lat', 'lon'])
 
 # evaluate node
@@ -22,8 +22,7 @@ ev = node.eval(coords)
 fig = plt.figure()
 ev.plot(vmin=0, cmap='terrain')
 
-# plt.plot([1,2,3,4], [10,15,30,45])
-
+# show plot
 plt.show()
 
 # input("waiting for enter or something")
