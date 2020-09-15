@@ -15,14 +15,16 @@ coords = Coordinates([clinspace(75, -60, 1000), clinspace(-155, -35, 1000)], dim
 
 # evaluate node
 ev = node.eval(coords)
+# node.download()
 
-# print(ev)
+
+print(ev)
 
 # plot the evaluation
-fig = plt.figure()
-ev.plot(vmin=0, cmap='terrain')
-
+# fig = plt.figure()
+# ev.plot(vmin=0, cmap='terrain')
+#
 # show plot
-plt.show()
+# plt.show()
 
 # input("waiting for enter or something")
