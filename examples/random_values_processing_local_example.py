@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib as mpl
 import pandas as pd
 
 
@@ -41,11 +42,19 @@ height_ranges = np.asarray(ranges(np.min(result_lst), np.max(result_lst), 6))
 result_lst = np.digitize(result_lst, bins=height_ranges, right=True)
 
 
-print(result_lst)
 plt.subplot(211)
 plt.imshow(lst)
+
 plt.subplot(212)
-plt.imshow(result_lst)
-plt.colorbar(ticks=range(0, 7))
-plt.legend()
+
+cmap = mpl.cm.viridis
+bounds = list(range(1, 8))
+norm = mpl.colors.BoundaryNorm(bounds, cmap.N)
+
+plt.imshow(result_lst, norm=norm)
+
+cbar = plt.colorbar()
+cbar.set_ticks([1.5, 2.5, 3.5, 4.5, 5.5, 6.5])
+cbar.set_ticklabels([1, 2, 3, 4, 5, 6])
+
 plt.show()

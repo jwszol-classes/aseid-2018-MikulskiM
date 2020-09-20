@@ -72,3 +72,5 @@ fabric.properties
 
 # Tiles downloaded from resources
 terraintiles/
+
+.idea/
