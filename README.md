@@ -71,6 +71,27 @@ On the https://registry.opendata.aws/terrain-tiles/ at the Usage Examples sectio
 </p>
 <br/><br/>
 
+## AWS EC2 connection
+
+<br/><br/>
+
+## Benchmark
+
+### Local results:
+#### Asus ZenBook UX410UA
+time:
+#### Samsung NP550P7C-S04PL
+time:
+
+### AWS service used:
+#### EC2 (Amazon Elastic Compute Cloud)
+- 8 vCPUs (The number of virtual CPUs for the instance)
+- 32 GB SSD
+- 10 Gb/s network performance
+- Ubuntu 20.04
+
+time:
+
 <br/><br/>
 <br/><br/>
 ### authors:
