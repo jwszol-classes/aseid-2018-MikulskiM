@@ -72,9 +72,13 @@ On the https://registry.opendata.aws/terrain-tiles/ at the Usage Examples sectio
 
 
 ![image](https://user-images.githubusercontent.com/28922780/93752485-05c12e00-fbff-11ea-8e9f-e68efa137b2d.png)
+<p align="center">
+  Picture 3a. python3 ase.py --area north
+</p>
+
 ![image](https://user-images.githubusercontent.com/28922780/93751758-e2e24a00-fbfd-11ea-83f9-26a536681a97.png)
 <p align="center">
-  Picture 3. python3 ase.py --area south
+  Picture 3b. python3 ase.py --area south
 </p>
 <br/><br/>
 
@@ -99,12 +103,12 @@ The AWS EC2 service
 
 ### Local results:
 #### Asus ZenBook UX410UA
-time: 6 minutes 20 seconds (380 seconds) (both Americas)
-time: 204 seconds (north America)
+time: 6 minutes 20 seconds (380 seconds) (both Americas)\
+time: 204 seconds (north America)\
 time: 89 seconds (south America)
 #### Samsung NP550P7C-S04PL
-time: 3 minutes 1 second (181 seconds) (both Americas)
-time: 119 seconds (north America)
+time: 3 minutes 1 second (181 seconds) (both Americas)\
+time: 119 seconds (north America)\
 time: 61 seconds (south America)
 
 ### AWS service used:
