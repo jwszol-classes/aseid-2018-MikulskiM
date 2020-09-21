@@ -70,11 +70,8 @@ On the https://registry.opendata.aws/terrain-tiles/ at the Usage Examples sectio
   Picture 2. Grouping data (6 groups) based on increase in altitude
 </p>
 
-<p float="center">
-  <img src="![image](https://user-images.githubusercontent.com/28922780/93751758-e2e24a00-fbfd-11ea-83f9-26a536681a97.png)" width="100" />
-  <img src="![image](https://user-images.githubusercontent.com/28922780/93752485-05c12e00-fbff-11ea-8e9f-e68efa137b2d.png)" width="100" /> 
-</p>
 
+![image](https://user-images.githubusercontent.com/28922780/93752485-05c12e00-fbff-11ea-8e9f-e68efa137b2d.png)
 ![image](https://user-images.githubusercontent.com/28922780/93751758-e2e24a00-fbfd-11ea-83f9-26a536681a97.png)
 <p align="center">
   Picture 3. python3 ase.py --area south
