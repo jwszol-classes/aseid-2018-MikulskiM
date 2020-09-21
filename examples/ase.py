@@ -6,6 +6,7 @@ import numpy as np
 from copy import deepcopy
 import matplotlib as mpl
 import argparse
+from timeit import default_timer as timer
 
 # Let's just ignore warnings
 warnings.filterwarnings('ignore')
@@ -34,8 +35,13 @@ def ranges(start_val, stop_val, nb):
 def get_terrain_tiles(which):
     # create coordinates to get tiles
     node = TerrainTiles(tile_format='geotiff', zoom=5)
-    coords = Coordinates([clinspace(75, -60, 1000), clinspace(-155, -35, 1000)], dims=['lat', 'lon'])
-
+    coords = 0
+    if (which == 'both'):
+        coords = Coordinates([clinspace(75, -60, 1000), clinspace(-155, -35, 1000)], dims=['lat', 'lon'])
+    elif(which == 'north'):
+        coords = Coordinates([clinspace(75, 10, 1000), clinspace(-155, -50, 1000)], dims=['lat', 'lon'])
+    elif(which == 'south'):
+        coords = Coordinates([clinspace(15, -60, 1000), clinspace(-85, -45, 1000)], dims=['lat', 'lon'])
     # evaluate node
     ev = node.eval(coords)
     data = np.asarray(ev.data)
@@ -63,25 +69,35 @@ def discretize_terrain_tiles(data):
     return data, height_labels
 
 
-
 def main():
-    parser = argparse.ArgumentParser(description='Process North, South or Both Americas at once')
-    args = parser.parse_args()
 
-    # water / no water
-    # North south, latin both
+    parser = argparse.ArgumentParser(description='Process North, South or Both Americas at once')
+    parser.add_argument("--waterzero", default=True, help="Decide, if values below sea level should be equal 0")
+    parser.add_argument('--area', choices=['both', 'north', 'south', 'latin'], default='both',
+                        help='decide which area should be processed')
+
+    args = parser.parse_args()
+    print(args)
+
     TOTAL_ITEMS = 1000 * 1000
     EDGE = int(np.sqrt(TOTAL_ITEMS))
     CHUNK_SIZE = 5
 
-    data_np = get_terrain_tiles(1)
+    start_downloading = timer()
+    data_np = get_terrain_tiles(args.area)
+    end_downloading = timer()
+    download_time = end_downloading - start_downloading
+
+    start_processing = timer()
     data_to_process = deepcopy(data_np)
     data_to_process = np.clip(data_to_process, 0, np.max(data_to_process))
 
     result_lst = process_terrain_tiles(data_to_process, CHUNK_SIZE, EDGE)
     result_lst, height_labels = discretize_terrain_tiles(result_lst)
+    end_processing = timer()
+    processing_time = end_processing - start_processing
 
-
+    print(f'Downloading time: {download_time} \n Processing time: {processing_time}')
     plt.subplot(211)
     plt.imshow(data_np)
 
@@ -91,8 +107,6 @@ def main():
     cmap = mpl.cm.viridis
     bounds = list(range(0, 8))
     norm = mpl.colors.BoundaryNorm(bounds, cmap.N)
-
-
 
     plt.imshow(result_lst, norm=norm)
     cbar = plt.colorbar()
