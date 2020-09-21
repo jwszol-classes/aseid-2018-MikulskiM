@@ -130,6 +130,11 @@ time: 25 seconds (both Americas)\
 7.24 times faster than Samsung NP550P7C-S04PL\
 15.2 times faster than Asus ZenBook UX410UA
 
+<br/>
+
+## video presentation
+https://youtu.be/GB5vKH7h77o
+
 <br/><br/>
 <br/><br/>
 ### authors:
