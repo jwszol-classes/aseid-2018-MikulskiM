@@ -9,6 +9,8 @@ import matplotlib as mpl
 # Let's just ignore warnings
 warnings.filterwarnings('ignore')
 
+# force matplotlib not to use any Xwindows backend
+mpl.use('Agg')
 
 def split(array, nrows, ncols):
     """Splits big matrix into array of submatrices (chunks)"""
@@ -31,7 +33,7 @@ CHUNK_SIZE = 5
 node = TerrainTiles(tile_format='geotiff', zoom=5)
 
 # create coordinates to get tiles
-coords = Coordinates([clinspace(75, -60, 1000), clinspace(-155, -35, 1000)], dims=['lat', 'lon'])
+coords = Coordinates([clinspace(75, 10, 1000), clinspace(-155, -50, 1000)], dims=['lat', 'lon'])
 
 # evaluate node
 ev = node.eval(coords)
@@ -69,4 +71,9 @@ cbar = plt.colorbar()
 cbar.set_ticks([1.5, 2.5, 3.5, 4.5, 5.5, 6.5])
 cbar.set_ticklabels([1, 2, 3, 4, 5, 6])
 
+# saving results to .png file
+plt.savefig('result.png')
+
 plt.show()
+
+
